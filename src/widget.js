@@ -1,6 +1,6 @@
 const blabber = require('./blabber');
 
-const { getIdentifier, getTitle, getFieldsList, getDefaults, getAdminFields, writeWidget } = require('./cms-helpers');
+const { getIdentifier, getTitle, getFieldsList, getDefaults, getAdminFields, writeWidget, writeCSS } = require('./cms-helpers');
 
 const template = (identifier, fields) => (`
 import React from 'react';
@@ -33,6 +33,7 @@ module.exports = (name, fields) => {
   console.log(blabber());
 
   const widgetFile = writeWidget(name, fields, template);
+  const cssFile = writeCSS(name);
 
-  console.log(`🚀 Done! Generated in ${widgetFile}`);
+  console.log(`🚀 Done! \n${widgetFile}\n${cssFile}`);
 };

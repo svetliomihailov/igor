@@ -56,7 +56,7 @@ const writeWidget = (name, fields, template) => {
   const result = template(name, fields);
 
   // Write widget file
-  const destination = './widgets';
+  const destination = './app/javascript/components/widgets';
   const widgetFile = `${destination}/${identifier}.js`;
   const libraryFile = `${destination}/index.js`;
 
@@ -69,16 +69,70 @@ const writeWidget = (name, fields, template) => {
   if (index.indexOf(`import ${identifier} `) === -1) {
     const [imports, exports] = index.replace('};\n', '').split('export default {\n');
 
-    const indexResult = `${imports.slice(0, -1)}import ${identifier} from './${identifier};'
+    const indexResult = `${imports.slice(0, -1)}import ${identifier} from './${identifier}';
 
 export default {
 ${exports}  ${identifier},
-}
+};
 `;
     fs.writeFileSync(libraryFile, indexResult, 'utf8');
   }
 
   return widgetFile;
+};
+
+const writeCSSFile = (fileName, result) => {
+  // Write style file
+  const destination = './app/assets/stylesheets/frontend/components';
+  const widgetFile = `${destination}/_${fileName}.scss`;
+  const libraryFile = `${destination}/_module.scss`;
+
+  fs.mkdirSync(destination, { recursive: true });
+  fs.writeFileSync(widgetFile, result, 'utf8');
+
+  // Update library file
+  const index = fs.readFileSync(libraryFile, { encoding: 'utf8' });
+
+  if (index.indexOf(`@import '${fileName}';`) === -1) {
+    const imports = index.slice(0, -1).split('\n');
+    const newImports = [
+      ...imports,
+      `@import '${fileName}';`
+    ];
+
+    const indexResult = newImports.join('\n') + '\n';
+
+    fs.writeFileSync(libraryFile, indexResult, 'utf8');
+  }
+
+  return widgetFile;
+};
+
+const writeCSS = (name) => {
+  const singular = getCSSSingular(name);
+
+  const result = `.${singular} {
+  // TODO: Add styles for the item
+}
+`;
+
+  return writeCSSFile(singular, result);
+};
+
+const writeCSSList = (name) => {
+  const plural = getCSSPlural(name);
+  const singular = getCSSSingular(name);
+
+  const result = `.${plural} {
+  // TODO: Add styles for the list
+
+  .${singular} {
+    // TODO: Add styles for the item
+  }
+}
+`;
+
+  return writeCSSFile(plural, result);
 };
 
 module.exports = {
@@ -93,4 +147,6 @@ module.exports = {
   getCSSPlural,
   getCSSSingular,
   writeWidget,
+  writeCSS,
+  writeCSSList,
 };
