@@ -1,6 +1,10 @@
 ## Installation
 
-TBD.
+`yarn global add @studioraketa/igor`
+
+or
+
+`npm i -g @studioraketa/igor`
 
 ## Usage
 
