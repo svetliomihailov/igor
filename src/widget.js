@@ -60,7 +60,7 @@ const ${getIdentifier(identifier)} = ({ ${getFieldsList(fields).join(', ')}, con
 );
 
 ${getIdentifier(identifier)}.title = '${getTitle(identifier)}';
-${getIdentifier(identifier)}.category = '';
+${getIdentifier(identifier)}.category = '_Unspecified';
 ${getIdentifier(identifier)}.primaryField = '${getFieldsList(fields)[0]}';
 
 ${getIdentifier(identifier)}.defaults = {
