@@ -1,5 +1,3 @@
-var colors = require('colors');
-
 module.exports = () => {
   const QUOTES = [
     'My grandfather use to work for your grandfather. Of course the rates have gone up.',

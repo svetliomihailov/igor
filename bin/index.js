@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var colors = require('colors');
 const igor = require('../src');
 
 const args = process.argv;
