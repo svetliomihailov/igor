@@ -1,0 +1,14 @@
+{
+  "name": "igor",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Vestimir Markov",
+  "license": "MIT",
+  "bin": {
+    "igor": "./bin/index.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inflected": "^2.0.4"
+  }
+}
