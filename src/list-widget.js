@@ -104,11 +104,14 @@ export default ${getIdentifier(identifier)};
 `);
 
 module.exports = (name, fields) => {
+  console.log(`${blabber()}\n`);
   console.log(`Generating list widget for ${name}...`.yellow);
-  console.log(blabber());
 
   const widgetFile = writeWidget(name, fields, template);
-  const cssFile = writeCSSList(name);
+  console.log(widgetFile.green);
 
-  console.log(`🚀 Done! \n${widgetFile}\n${cssFile}`);
+  const cssFile = writeCSSList(name);
+  console.log(cssFile.green);
+
+  console.log(`\n🚀 Done!`);
 };

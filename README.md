@@ -13,12 +13,15 @@ npm i -g @studioraketa/igor
 ## Usage
 
 ```
-igor component-style section_title
-igor page-style cart
-igor component app/UserInfo
-igor component ui/Button
 igor widget SectionTitle title:text
-igor widget Cards variant:select[2/3/4] list:(title:text link:link_settings image:image)
+igor list-widget Cards
+igor widget --next SectionTitle title:text # PENDING
+igor widget --rails SectionTitle title:text # PENDING
+igor widget Cards variant:select[2/3/4] list:(title:text link:link_settings image:image) # PENDING
+igor component-style section_title # PENDING
+igor page-style cart # PENDING
+igor component app/UserInfo # PENDING
+igor component ui/Button # PENDING
 ```
 
 ## TODO
