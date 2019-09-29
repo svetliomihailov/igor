@@ -1,10 +1,14 @@
 ## Installation
 
-`yarn global add @studioraketa/igor`
+```
+yarn global add @studioraketa/igor
+```
 
 or
 
-`npm i -g @studioraketa/igor`
+```
+npm i -g @studioraketa/igor
+```
 
 ## Usage
 
