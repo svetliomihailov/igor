@@ -3,8 +3,7 @@ const blabber = require('./blabber');
 
 const { getIdentifier, getTitle, getCSSPlural, getCSSSingular, writeWidget, writeCSSList } = require('./cms-helpers');
 
-const template = (identifier, _fields) => (`
-import React from 'react';
+const template = (identifier, _fields) => (`import React from 'react';
 import { Container, List, ImagePicker, TextInput, RichText, SelectMenu, LinkSettings, Img } from '@raketa-cms/raketa-cms';
 import Link from '../frontend/Link';
 
@@ -43,6 +42,7 @@ const ${getIdentifier(identifier)} = ({ variant, list, containerSettings }) => (
 
 ${getIdentifier(identifier)}.title = '${getTitle(identifier)}';
 ${getIdentifier(identifier)}.category = '_Unspecified';
+${getIdentifier(identifier)}.dialogSize = 'large';
 
 ${getIdentifier(identifier)}.defaults = {
   variant: 3,
@@ -86,7 +86,7 @@ ${getIdentifier(identifier)}.adminFields = (items, onChange, settings) => (
   <div>
     <SelectMenu
       label="Variant"
-      options={[[2, 2], [3, 3], [4, 4]]}
+      options={[[2, '2 columns'], [3, '3 columns'], [4, '4 columns']]}
       value={settings.variant}
       onChange={value => onChange('variant', value)}
     />
@@ -94,8 +94,10 @@ ${getIdentifier(identifier)}.adminFields = (items, onChange, settings) => (
     <List
       listItem={(settings, onChangeItem) =>
         <ListItem settings={settings} onChangeItem={onChangeItem} />}
-      onChangeList={onChange}
       items={items}
+      template={{ title: 'Title', link: LinkSettings.defaults, description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>', image: 'http://placehold.it/400x300' }}
+      primaryField="title"
+      onChangeList={onChange}
     />
   </div>
 );

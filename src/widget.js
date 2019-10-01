@@ -1,20 +1,24 @@
 const blabber = require('./blabber');
 
-const { getIdentifier, getTitle, getFieldsList, getDefaults, getAdminFields, writeWidget, writeCSS } = require('./cms-helpers');
+const { getIdentifier, getTitle, getFieldsList, getDefaults, getAdminFields, getCSSSingular, writeWidget, writeCSS } = require('./cms-helpers');
 
-const template = (identifier, fields) => (`
-import React from 'react';
+const template = (identifier, fields) => (`import React from 'react';
 import { Container } from '@raketa-cms/raketa-cms';
 
 const ${getIdentifier(identifier)} = ({ ${getFieldsList(fields).join(', ')}, containerSettings }) => (
   <Container settings={containerSettings}>
-    ${getTitle(identifier)}
+    <div className="${getCSSSingular(identifier)}">
+      <div className="container">
+        ${getTitle(identifier)}
+      </div>
+    </div>
   </Container>
 );
 
 ${getIdentifier(identifier)}.title = '${getTitle(identifier)}';
 ${getIdentifier(identifier)}.category = '_Unspecified';
 ${getIdentifier(identifier)}.primaryField = '${getFieldsList(fields)[0]}';
+${getIdentifier(identifier)}.dialogSize = 'large';
 
 ${getIdentifier(identifier)}.defaults = {
 ${getDefaults(fields).join('\n')}
