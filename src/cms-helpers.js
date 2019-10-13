@@ -35,7 +35,7 @@ const getJSONSelect = (type) => {
   }
 };
 
-const getJSONDefinition = (type) => {
+const getJSONDefinition = (type = 'text') => {
   if (type.indexOf('select[') !== -1) {
     return getJSONSelect(type);
   }
