@@ -50,11 +50,11 @@ Field types:
 - `image`: generates an image picker setting
 - `select[option1/option2/option3]`: generates a select setting and its options
 
-**NB:** By default if you not specify field type a `text` will be used.
+**NB:** By default if you do not specify a field type, the `text` type will be used.
 
 ### `igor list-widget` ...
 
-This generator creates a boilerplate list (you cannot specify the options, but you get a good example of all types) widget with corresponidng SASS file, as well as including them in their library indices.
+This generator creates a boilerplate list (you cannot specify the field options during generation, but you get a good example of all types) widget with corresponidng SASS file, as well as including them in their library indices.
 
 Usage:
 
