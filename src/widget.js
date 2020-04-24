@@ -1,6 +1,6 @@
-const blabber = require('./blabber');
+const blabber = require('./shared/blabber');
 
-const { getIdentifier, getTitle, getFieldsList, getDefaults, getAdminFields, getCSSSingular, writeWidget, writeCSS } = require('./cms-helpers');
+const { getIdentifier, getTitle, getFieldsList, getDefaults, getAdminFields, getCSSSingular, writeWidget, writeCSS } = require('./cms/helpers');
 
 const template = (identifier, fields) => (`import React from 'react';
 import { Container } from '@raketa-cms/raketa-cms';

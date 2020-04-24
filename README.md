@@ -68,6 +68,7 @@ Examples:
 igor list-widget Cards
 igor list-widget Testimonials
 igor list-widget Features
+igor neu-admin-module ProposalRequest uid:string deadline:datetime opens_at:datetime title:string subsidiary:string content: string
 ```
 
 ## TODO
@@ -75,7 +76,7 @@ igor list-widget Features
 - [x] Raketa CMS (Rails)
 - [ ] Raketa CMS (NextJS)
 - [ ] Design System (NextJS)
-- [ ] Neu Admin (Rails)
+- [x] Neu Admin (Rails)
 
 ## Development
 
