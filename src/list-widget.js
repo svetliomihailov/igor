@@ -4,7 +4,9 @@ const blabber = require('./shared/blabber');
 const { getIdentifier, getTitle, getCSSPlural, getCSSSingular, writeWidget, writeCSSList } = require('./cms/helpers');
 
 const template = (identifier, _fields) => (`import React from 'react';
-import { Container, List, ImagePicker, TextInput, RichText, SelectMenu, LinkSettings, Img } from '@raketa-cms/raketa-cms';
+import { Container, List, TextInput, SelectMenu, LinkSettings, Img } from '@raketa-cms/raketa-cms';
+import { ImagePicker } from '@raketa-cms/raketa-image-picker';
+import { RichText } from '@raketa-cms/raketa-rte';
 import Link from '../frontend/Link';
 
 const Item = ({ title, link, image, description }) => (
@@ -47,15 +49,21 @@ ${getIdentifier(identifier)}.dialogSize = 'large';
 ${getIdentifier(identifier)}.defaults = {
   variant: 3,
   list: [
-    { id: 1, title: 'Title', link: LinkSettings.defaults, description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>', image: 'http://placehold.it/400x300' },
-    { id: 2, title: 'Title', link: LinkSettings.defaults, description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>', image: 'http://placehold.it/400x300' },
-    { id: 3, title: 'Title', link: LinkSettings.defaults, description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>', image: 'http://placehold.it/400x300' },
+    { id: 1, link: LinkSettings.defaults, image: 'http://placehold.it/400x300', title: 'Title', description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>' },
+    { id: 2, link: LinkSettings.defaults, image: 'http://placehold.it/400x300', title: 'Title', description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>' },
+    { id: 3, link: LinkSettings.defaults, image: 'http://placehold.it/400x300', title: 'Title', description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>' },
   ],
   containerSettings: {},
 };
 
 const ListItem = ({ settings, onChangeItem }) => (
   <div>
+    <LinkSettings
+      label="Link"
+      onChange={value => onChangeItem('link', value)}
+      value={settings.link}
+    />
+
     <ImagePicker
       label="Image"
       onChange={value => onChangeItem('image', value)}
@@ -66,12 +74,6 @@ const ListItem = ({ settings, onChangeItem }) => (
       label="Title"
       onChange={value => onChangeItem('title', value)}
       value={settings.title}
-    />
-
-    <LinkSettings
-      label="Link"
-      onChange={value => onChangeItem('link', value)}
-      value={settings.link}
     />
 
     <RichText
@@ -95,7 +97,7 @@ ${getIdentifier(identifier)}.adminFields = (items, onChange, settings) => (
       listItem={(settings, onChangeItem) =>
         <ListItem settings={settings} onChangeItem={onChangeItem} />}
       items={items}
-      template={{ title: 'Title', link: LinkSettings.defaults, description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>', image: 'http://placehold.it/400x300' }}
+      template={{ link: LinkSettings.defaults, image: 'http://placehold.it/400x300', title: 'Title', description: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores distinctio ea non? Quisquam enim blanditiis deserunt cumque earum.</p>' }}
       primaryField="title"
       onChangeList={onChange}
     />

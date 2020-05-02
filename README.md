@@ -74,9 +74,9 @@ igor neu-admin-module ProposalRequest uid:string deadline:datetime opens_at:date
 ## TODO
 
 - [x] Raketa CMS (Rails)
+- [x] Neu Admin (Rails)
 - [ ] Raketa CMS (NextJS)
 - [ ] Design System (NextJS)
-- [x] Neu Admin (Rails)
 
 ## Development
 

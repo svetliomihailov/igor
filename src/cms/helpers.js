@@ -40,6 +40,14 @@ const getJSONDefinition = (type = 'text') => {
     return getJSONSelect(type);
   }
 
+  if (type === 'image') {
+    return { type: 'custom', component: 'ImagePicker' };
+  }
+
+  if (type === 'rich') {
+    return { type: 'custom', component: 'RichText' };
+  }
+
   return { type };
 };
 
