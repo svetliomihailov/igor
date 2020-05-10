@@ -111,7 +111,7 @@ module.exports = (name, fields) => {
   writeViewFile(toSnakeCasePlural(name), '_form.html.erb', formTemplate(fields))
   writeViewFile(toSnakeCasePlural(name), 'index.html.erb', indexTemplate(name, fields))
 
-  console.log(`Add the following to your admin section in the router file: resources :${toSnakeCase(name)}`.green);
+  console.log(`Add the following to your admin section in the router file: resources :${toSnakeCasePlural(name)}`.green);
 
   console.log(`\n🚀 Done!`);
 };
