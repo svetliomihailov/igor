@@ -52,12 +52,12 @@ const fieldsHeaders = (fields) => {
   }).join(`\n`)
 };
 
-const primaryFieldData = (fieldName) => `          <td class="primary"><%= record.${fieldName} %></td>`
+const primaryFieldData = (fieldName, moduleName) => `          <td class="primary"><%= link_to record.${fieldName}, edit_admin_${toSnakeCase(moduleName)}_path(record) %></td>`
 const fieldData = (fieldName) => `          <td><%= record.${fieldName} %></td>`
-const fieldsData = (fields) => {
+const fieldsData = (fields, moduleName) => {
   return getFieldNames(fields).map((name, idx) => {
     if (idx === 0) {
-      return primaryFieldData(name)
+      return primaryFieldData(name, moduleName)
     } else {
       return fieldData(name)
     }
@@ -83,7 +83,7 @@ ${fieldsHeaders(fields)}
     <% if @resources.present? %>
       <% @resources.each do |record| %>
         <tr>
-${fieldsData(fields)}
+${fieldsData(fields, name)}
           <td class="actions">
             <%= action_link :edit, edit_admin_${toSnakeCase(name)}_path(record) %>
             <%= action_link :delete, admin_${toSnakeCase(name)}_path(record) %>
@@ -110,6 +110,8 @@ module.exports = (name, fields) => {
   writeControllerFile(`${toSnakeCasePlural(name)}_controller.rb`, controllerTemplate(name, fields));
   writeViewFile(toSnakeCasePlural(name), '_form.html.erb', formTemplate(fields))
   writeViewFile(toSnakeCasePlural(name), 'index.html.erb', indexTemplate(name, fields))
+
+  console.log(`Add the following to your admin section in the router file: resources :${toSnakeCase(name)}`.green);
 
   console.log(`\n🚀 Done!`);
 };

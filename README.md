@@ -71,6 +71,26 @@ igor list-widget Features
 igor neu-admin-module ProposalRequest uid:string deadline:datetime opens_at:datetime title:string subsidiary:string content: string
 ```
 
+### `igor neu-admin-module` ...
+
+This generator creates boilerplate for the NeuAdmin module.
+
+Run the command from within a rails project directory which uses NeuAdmin. The generator will run the
+[rails commands](https://guides.rubyonrails.org/command_line.html#rails-generate) and then add the files
+needed by the NeuAdmin module.
+
+Usage:
+
+```
+igor neu-admin-module ModuleName fiel:type field:type:option
+```
+
+Examples:
+
+```
+igor neu-admin-module ProposalRequest uid:string:unique deadline:datetime opens_at:datetime title:string subsidiary:string content:string
+```
+
 ## TODO
 
 - [x] Raketa CMS (Rails)
