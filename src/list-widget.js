@@ -1,4 +1,3 @@
-const fs = require('fs');
 const blabber = require('./shared/blabber');
 
 const { getIdentifier, getTitle, getCSSPlural, getCSSSingular, writeWidget, writeCSSList } = require('./cms/helpers');
